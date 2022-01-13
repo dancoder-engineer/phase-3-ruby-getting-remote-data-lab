@@ -1,0 +1,60 @@
+
+GetRequester
+  is a class that can be initiated by passing in a URL
+  get_response_body
+    is an instance method on the GetRequester class (FAILED - 1)
+    sends a GET request to the URL provided on initialization, returning the body of the request (FAILED - 2)
+  parse_json
+    is an instance method on the GetRequester class (FAILED - 3)
+    converts JSON returned from 'get_response_body' into Ruby data structures (FAILED - 4)
+
+Failures:
+
+  1) GetRequester get_response_body is an instance method on the GetRequester class
+     Failure/Error: expect { get_requester.get_response_body }.not_to raise_error
+
+       expected no Exception, got #<NameError: undefined local variable or method `url' for #<GetRequester:0x000055c969469a50>
+       Did you mean?  @url
+                      uri
+                      URI> with backtrace:
+         # ./lib/get_requester.rb:13:in `get_response_body'
+         # ./spec/get_requester_spec.rb:15:in `block (4 levels) in <top (required)>'
+         # ./spec/get_requester_spec.rb:15:in `block (3 levels) in <top (required)>'
+     # ./spec/get_requester_spec.rb:15:in `block (3 levels) in <top (required)>'
+
+  2) GetRequester get_response_body sends a GET request to the URL provided on initialization, returning the body of the request
+     Failure/Error: uri = URI.parse(url)
+
+     NameError:
+       undefined local variable or method `url' for #<GetRequester:0x000055c969508f38>
+       Did you mean?  @url
+                      uri
+                      URI
+     # ./lib/get_requester.rb:13:in `get_response_body'
+     # ./spec/get_requester_spec.rb:20:in `block (3 levels) in <top (required)>'
+
+  3) GetRequester parse_json is an instance method on the GetRequester class
+     Failure/Error: expect { get_requester.parse_json }.not_to raise_error
+
+       expected no Exception, got #<NoMethodError: undefined method `parse_json' for #<GetRequester:0x000055c968dbf3d0>> with backtrace:
+         # ./spec/get_requester_spec.rb:27:in `block (4 levels) in <top (required)>'
+         # ./spec/get_requester_spec.rb:27:in `block (3 levels) in <top (required)>'
+     # ./spec/get_requester_spec.rb:27:in `block (3 levels) in <top (required)>'
+
+  4) GetRequester parse_json converts JSON returned from 'get_response_body' into Ruby data structures
+     Failure/Error: results = get_requester.parse_json
+
+     NoMethodError:
+       undefined method `parse_json' for #<GetRequester:0x000055c9694faeb0>
+     # ./spec/get_requester_spec.rb:32:in `block (3 levels) in <top (required)>'
+
+Finished in 0.00828 seconds (files took 0.14238 seconds to load)
+5 examples, 4 failures
+
+Failed examples:
+
+rspec ./spec/get_requester_spec.rb:13 # GetRequester get_response_body is an instance method on the GetRequester class
+rspec ./spec/get_requester_spec.rb:18 # GetRequester get_response_body sends a GET request to the URL provided on initialization, returning the body of the request
+rspec ./spec/get_requester_spec.rb:25 # GetRequester parse_json is an instance method on the GetRequester class
+rspec ./spec/get_requester_spec.rb:30 # GetRequester parse_json converts JSON returned from 'get_response_body' into Ruby data structures
+
